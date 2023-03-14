@@ -1,7 +1,5 @@
 <template>
-    <div>
       <button v-if="completedTasks.length > 0" @click="deleteCompletedTasks">Supprimer les tâches complétées</button>
-    </div>
   </template>
   
   <script>

@@ -1,12 +1,11 @@
 <template>
     <p>Il vous reste {{ remainingTasks }} tâches à faire.</p>
-    
     <div>
       <ul>
         <li v-for="(task, index) in tasks" :key="index">
           <div v-if="!task.editing">
             <input type="checkbox" :checked="task.completed" @change="updateTaskStatus(task)">
-            {{ task.name }}
+            <span :class="{ completed: task.completed }">{{ task.name }}</span>
             <button @click="editTask(index)">Modifier</button>
             <button @click="deleteTask(index)">Supprimer</button>
           </div>
@@ -18,7 +17,7 @@
       </ul>
     </div>
   </template>
-  
+    
   <script>
   export default {
     props: {
@@ -54,6 +53,9 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
+  }
+  .completed {
+  text-decoration: line-through;
   }
   </style>
   

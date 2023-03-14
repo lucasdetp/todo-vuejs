@@ -1,7 +1,6 @@
 <template>
-    <div>
+    <div class="todo">
       <h2>To Do List ({{ tasks.length }})</h2>
-      <p>Il vous reste {{ remainingTasks }} tâches à faire.</p>
       <form @submit.prevent="addTask">
         <input type="text" v-model="newTask" placeholder="Ajouter une tâche...">
         <button>+</button>
@@ -32,14 +31,6 @@
         newTask: '',
       };
     },
-    computed: {
-      completedTasks() {
-        return this.tasks.filter(task => task.completed);
-      },
-      remainingTasks() {
-        return this.tasks.filter(task => !task.completed).length;
-      },
-    },
     methods: {
       addTask() {
         if (this.newTask) {
@@ -64,8 +55,12 @@
   </script>
   
   <style>
+  .todo{
+    min-width: 700px
+  }
   input{
     padding: 10px;
+    min-width: 190px;
   }
   h2{
     background-color: #68C3A3;
